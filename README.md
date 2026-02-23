@@ -1,2 +1,16 @@
-# Sales-Data-Analysis
-Interactive Sales Dashboard built using Power BI. This project covers end-to-end data cleaning, transformation, DAX measure creation, and interactive visualization to generate business insights from raw sales data.
+Total Sales = SUM('Sales_Data'[Total Sales])
+
+Total Orders = COUNT('Sales_Data'[Order ID])
+
+Total Quantity = SUM('Sales_Data'[Quantity])
+
+Average Order Value = DIVIDE([Total Sales], [Total Orders])
+
+Total Customers = DISTINCTCOUNT('Sales_Data'[Customer Name])
+
+Net Revenue =
+SUMX(
+    'Sales_Data',
+    'Sales_Data'[Total Sales] -
+    ('Sales_Data'[Total Sales] * 'Sales_Data'[Discount %])
+)
